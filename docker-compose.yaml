@@ -22,6 +22,9 @@ services:
       MYSQLD_EXPORTER_PASSWORD: "${MYSQL_PASSWORD}"
     ports:
       - "${EXPORTER_PORT}:9104"
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+      
 
   grafana:
     image: grafana/grafana:latest
