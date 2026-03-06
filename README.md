@@ -22,3 +22,4 @@ sudo chmod -R 755 /data/prometheus_data
 ## Grafana Dashboard IDs
 - MySql        = 1860
 - Linux server = 7362
+- Docker       = 193
