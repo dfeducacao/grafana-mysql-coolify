@@ -18,3 +18,7 @@ sudo chmod -R 755 /data/grafana
 sudo chown -R 65534:65534 /data/prometheus_data
 sudo chmod -R 755 /data/prometheus_data
 ```
+
+## Grafana Dashboard IDs
+- MySql        = 1860
+- Linux server = 7362
