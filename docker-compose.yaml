@@ -1,5 +1,4 @@
 version: '3.9'
-
 services:
   prometheus:
     image: prom/prometheus:latest
@@ -16,12 +15,27 @@ services:
     container_name: mysqld_exporter
     restart: unless-stopped
     command:
-      - "--mysqld.address=${MYSQL_HOST}:${MYSQL_PORT}"
-      - "--mysqld.username=${MYSQL_USER}"
+      - --mysqld.address=${MYSQL_HOST}:${MYSQL_PORT}
+      - --mysqld.username=${MYSQL_USER}
     environment:
       MYSQLD_EXPORTER_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - ${EXPORTER_PORT}:9104
+
+  node_exporter:
+    image: prom/node-exporter:latest
+    container_name: node_exporter
+    restart: unless-stopped
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - --path.procfs=/host/proc
+      - --path.sysfs=/host/sys
+      - --path.rootfs=/rootfs
 
   grafana:
     image: grafana/grafana:latest
