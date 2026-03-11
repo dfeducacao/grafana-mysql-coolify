@@ -18,3 +18,9 @@ scrape_configs:
   - job_name: cadvisor
     static_configs:
       - targets: ['cadvisor:8080']
+
+## SERVER ULTRON START
+  - job_name: "server-y"
+    static_configs:
+      - targets: ["143.244.163.25:9100"]
+## SERVER ULTRON END
